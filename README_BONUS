@@ -1,0 +1,8 @@
+Tema2
+Nita Maria-Alexandra 334CA
+
+Citirea fisierului de intrare este realizata prin partajarea
+BufferedReader-ului corespunzator acestuia, fiind o variabila
+a clasei OrderTasks, astfel fiecare thread
+ajunge sa citeasca o singura linie din fisier, alta decat celelalte
+thread-uri, parcurgand fisierul linie cu linie, citindu-l o singura data.

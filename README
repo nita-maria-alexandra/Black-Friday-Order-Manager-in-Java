@@ -1,0 +1,25 @@
+Tema2
+Nita Maria-Alexandra 334CA
+
+Pentru rezolvarea temei am folosit modelul Replicated Workers.
+
+In main am creat:
+- doua thread pool-uri (fiecare cu maxim P thread-uri) unul
+pentru citirea comenzilor, iar celalalt pentru rezolvarea comenzilor, respectiv
+gasirea produselor;
+- fisierele de iesire;
+- fisiserul din care citesc comenzile si fisierul din care citesc produsele.
+
+In OrderTasks, atunci cand un thread de nivel 1 gaseste o comanda care are un
+numar de produse diferit de zero, porneste un thread de nivel doi si adauga in
+coada un nou OrderTask. Threadul care porneste un thread de nivel 2
+(ProductTasks) asteapta pana cand acesta se termina si, dupa aceea, scrie in
+fisierul de output ca, comanda a fost expediata. Pentru a face threadul de
+nivel 1 sa astepte threadul de nivel 2 am folosit un semafor.
+
+In ProductTasks un thread citeste intreg fisierul si scrie in fisierul de output
+atunci cand proceseaza un produs din comanda primita.
+
+In main se vor inchide fisierele de output de-abia dupa ce toate threadurile,
+atat cele de nivel 1, cat si cele de nivel 2, si-au terminat executia. Pentru
+acest lucru am folosit un semafor.
